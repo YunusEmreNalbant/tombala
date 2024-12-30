@@ -2,6 +2,8 @@
 
 Bu proje arkadaşlarınızla veya ailenizle oynayabileceğiniz yılbaşı temalı iki kişilik basit bir tombala oyunudur.
 
+Denemek için: [Canlı Demo](https://tombala-production.up.railway.app/)
+
 ## 📸 Ekran Görüntüleri
 
 ### Ana Sayfa
