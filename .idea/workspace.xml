@@ -4,22 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3d86f64a-4aa5-4cf1-8b49-c162e97bce8b" name="Changes" comment="remove target directory and add gitignore">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/yunusemrenalbant/tombala/config/WebConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/game.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/home.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/game.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/game.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/yunusemrenalbant/tombala/config/WebConfig.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/yunusemrenalbant/tombala/controller/TombalaController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/yunusemrenalbant/tombala/controller/TombalaController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/yunusemrenalbant/tombala/model/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/yunusemrenalbant/tombala/model/Game.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/yunusemrenalbant/tombala/model/GameUpdate.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/yunusemrenalbant/tombala/model/GameUpdate.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/yunusemrenalbant/tombala/model/TombalaCard.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/yunusemrenalbant/tombala/model/TombalaCard.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/yunusemrenalbant/tombala/service/GameService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/yunusemrenalbant/tombala/service/GameService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/css/game.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/css/home.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+    <list default="true" id="3d86f64a-4aa5-4cf1-8b49-c162e97bce8b" name="Changes" comment="bug fix">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/game.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/home.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/tombala-0.0.1-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/tombala-0.0.1-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/tombala-0.0.1-SNAPSHOT.jar.original" beforeDir="false" afterPath="$PROJECT_DIR$/target/tombala-0.0.1-SNAPSHOT.jar.original" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -106,7 +97,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1735579497267</updated>
-      <workItem from="1735579498581" duration="4879000" />
+      <workItem from="1735579498581" duration="5209000" />
     </task>
     <task id="LOCAL-00001" summary="add .gitattributes file">
       <option name="closed" value="true" />
@@ -148,7 +139,15 @@
       <option name="project" value="LOCAL" />
       <updated>1735583747068</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="bug fix">
+      <option name="closed" value="true" />
+      <created>1735584437188</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1735584437188</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -160,6 +159,7 @@
     <MESSAGE value="update README.md" />
     <MESSAGE value="refactor" />
     <MESSAGE value="remove target directory and add gitignore" />
-    <option name="LAST_COMMIT_MESSAGE" value="remove target directory and add gitignore" />
+    <MESSAGE value="bug fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="bug fix" />
   </component>
 </project>
