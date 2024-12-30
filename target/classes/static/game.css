@@ -393,3 +393,110 @@ body::before {
 .developer-info a:hover {
     color: #fff !important;
 }
+
+.numbers-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(40px, 1fr));
+    gap: 5px;
+    padding: 10px;
+    background: rgba(255,255,255,0.8);
+    border-radius: 15px;
+    margin: 10px;
+}
+
+.number {
+    width: 100%;
+    aspect-ratio: 1;
+    min-width: 35px;
+    max-width: 45px;
+    margin: 2px auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #e9ecef;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    font-size: calc(0.8rem + 0.4vw);
+    background: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+@media (max-width: 768px) {
+    .game-container {
+        padding: 1rem;
+        margin: 0;
+    }
+
+    .game-header h1 {
+        font-size: 2rem;
+    }
+
+    .card {
+        margin-bottom: 1rem;
+    }
+
+    .card-header {
+        padding: 1rem;
+    }
+
+    .card-body {
+        padding: 0.5rem;
+    }
+
+    .btn {
+        padding: 0.8rem 1.5rem;
+        font-size: 0.9rem;
+    }
+
+    .badge {
+        padding: 0.5rem 1rem;
+        font-size: 0.8rem;
+    }
+
+    .drawn-numbers-container {
+        padding: 1rem;
+    }
+
+    .drawn-numbers .number {
+        min-width: 30px;
+        max-width: 40px;
+        font-size: 0.9rem;
+    }
+
+    .game-id-wrapper {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .copy-button {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 576px) {
+    .numbers-container {
+        grid-template-columns: repeat(auto-fit, minmax(30px, 1fr));
+        gap: 3px;
+        padding: 5px;
+    }
+
+    .number {
+        min-width: 30px;
+        max-width: 35px;
+        font-size: 0.8rem;
+        border-radius: 6px;
+    }
+
+    .game-header {
+        padding: 1.5rem 1rem;
+    }
+
+    .alert {
+        padding: 0.8rem;
+        font-size: 0.9rem;
+    }
+}
