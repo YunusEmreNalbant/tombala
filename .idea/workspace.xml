@@ -4,16 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3d86f64a-4aa5-4cf1-8b49-c162e97bce8b" name="Changes" comment="refactor">
+    <list default="true" id="3d86f64a-4aa5-4cf1-8b49-c162e97bce8b" name="Changes" comment="remove target directory and add gitignore">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yunusemrenalbant/tombala/config/WebConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/game.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/home.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/game.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/game.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/yunusemrenalbant/tombala/config/WebConfig.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/yunusemrenalbant/tombala/controller/TombalaController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/yunusemrenalbant/tombala/controller/TombalaController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/yunusemrenalbant/tombala/model/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/yunusemrenalbant/tombala/model/Game.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/yunusemrenalbant/tombala/model/GameUpdate.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/yunusemrenalbant/tombala/model/GameUpdate.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/yunusemrenalbant/tombala/model/TombalaCard.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/yunusemrenalbant/tombala/model/TombalaCard.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/yunusemrenalbant/tombala/service/GameService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/yunusemrenalbant/tombala/service/GameService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/css/game.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/css/home.css" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/tombala-0.0.1-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/tombala-0.0.1-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/tombala-0.0.1-SNAPSHOT.jar.original" beforeDir="false" afterPath="$PROJECT_DIR$/target/tombala-0.0.1-SNAPSHOT.jar.original" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,6 +75,11 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources/static/css" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="TombalaApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
@@ -95,7 +106,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1735579497267</updated>
-      <workItem from="1735579498581" duration="4032000" />
+      <workItem from="1735579498581" duration="4879000" />
     </task>
     <task id="LOCAL-00001" summary="add .gitattributes file">
       <option name="closed" value="true" />
@@ -129,7 +140,15 @@
       <option name="project" value="LOCAL" />
       <updated>1735583495097</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="remove target directory and add gitignore">
+      <option name="closed" value="true" />
+      <created>1735583747068</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1735583747068</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -140,6 +159,7 @@
     <MESSAGE value="enhance responsive styling for game interface in game.css" />
     <MESSAGE value="update README.md" />
     <MESSAGE value="refactor" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactor" />
+    <MESSAGE value="remove target directory and add gitignore" />
+    <option name="LAST_COMMIT_MESSAGE" value="remove target directory and add gitignore" />
   </component>
 </project>

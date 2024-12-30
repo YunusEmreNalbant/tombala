@@ -8,8 +8,354 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.5.1/sockjs.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
-    <link th:href="@{/static/css/game.css}" rel="stylesheet" />
+    <style>
+        body {
+            background: linear-gradient(135deg, #1a2634 0%, #243447 100%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
 
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image:
+                    radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+                    radial-gradient(circle at 75% 75%, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            pointer-events: none;
+            opacity: 0.5;
+        }
+
+        .game-container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 2rem;
+        }
+
+        .game-header {
+            background: linear-gradient(135deg, #c62828, #e53935);
+            color: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            margin-bottom: 2rem;
+            box-shadow: 0 8px 32px rgba(198, 40, 40, 0.3);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            user-select: text;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .game-header h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 2;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(to right, #c62828, #e53935);
+            opacity: 0.8;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(198, 40, 40, 0.2);
+        }
+
+        .card-header {
+            background: transparent;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            padding: 1.5rem;
+        }
+
+        .numbers-container {
+            display: grid;
+            grid-template-columns: repeat(8, 1fr);
+            gap: 10px;
+            padding: 20px;
+            background: rgba(255,255,255,0.8);
+            border-radius: 15px;
+            margin: 10px;
+        }
+
+        .number {
+            width: 45px;
+            height: 45px;
+            margin: 2px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid #e9ecef;
+            border-radius: 12px;
+            font-weight: bold;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            font-size: 1.2rem;
+            background: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .number::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0));
+            z-index: 1;
+        }
+
+        .number.marked {
+            background: linear-gradient(135deg, #2ecc71, #27ae60);
+            color: white;
+            border-color: transparent;
+            transform: scale(0.95);
+            box-shadow: 0 2px 4px rgba(46, 204, 113, 0.3);
+        }
+
+        .number.drawn {
+            display: inline-flex;
+            width: 40px;
+            height: 40px;
+            margin: 4px;
+            background-color: #e9ecef;
+            border: 2px solid #dee2e6;
+            border-radius: 10px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .number.last-drawn {
+            background: linear-gradient(135deg, #c62828, #e53935);
+            color: white;
+            border-color: transparent;
+            transform: scale(1.1);
+            box-shadow: 0 4px 8px rgba(198, 40, 40, 0.3);
+            position: relative;
+        }
+
+        .number.last-drawn::after {
+            content: 'Son Çekilen';
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #c62828;
+            color: white;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            white-space: nowrap;
+        }
+
+        .player-turn {
+            border-color: #ffc107 !important;
+            box-shadow: 0 0 0 0.25rem rgba(255, 193, 7, 0.25);
+        }
+
+        .game-id-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+
+        .game-id-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            backdrop-filter: blur(5px);
+        }
+
+        .game-id {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: white;
+        }
+
+        .copy-button {
+            border: none;
+            background: none;
+            color: rgba(255, 255, 255, 0.8);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            padding: 0.5rem;
+            border-radius: 4px;
+        }
+
+        .copy-button:hover {
+            color: white;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .copy-button.copy-success {
+            color: #2ecc71;
+        }
+
+        .drawn-numbers-container {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-top: 2rem;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .drawn-numbers {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .snowflakes {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .snowflake {
+            position: absolute;
+            color: #fff;
+            font-size: 1em;
+            font-family: Arial, sans-serif;
+            text-shadow: 0 0 5px #000;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-100vh) rotate(0deg);
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+            }
+        }
+
+        .snowflake:nth-of-type(0) { left: 1%; animation-delay: 0s, 0s; }
+        .snowflake:nth-of-type(1) { left: 10%; animation-delay: 1s, 1s; }
+        .snowflake:nth-of-type(2) { left: 20%; animation-delay: 6s, 0.5s; }
+        .snowflake:nth-of-type(3) { left: 30%; animation-delay: 4s, 2s; }
+        .snowflake:nth-of-type(4) { left: 40%; animation-delay: 2s, 2s; }
+        .snowflake:nth-of-type(5) { left: 50%; animation-delay: 8s, 3s; }
+        .snowflake:nth-of-type(6) { left: 60%; animation-delay: 6s, 2s; }
+        .snowflake:nth-of-type(7) { left: 70%; animation-delay: 2.5s, 1s; }
+        .snowflake:nth-of-type(8) { left: 80%; animation-delay: 1s, 0s; }
+        .snowflake:nth-of-type(9) { left: 90%; animation-delay: 3s, 1.5s; }
+
+        @media (max-width: 768px) {
+            .game-container {
+                padding: 1rem;
+                margin: 0;
+            }
+
+            .game-header h1 {
+                font-size: 2rem;
+            }
+
+            .card {
+                margin-bottom: 1rem;
+            }
+
+            .card-header {
+                padding: 1rem;
+            }
+
+            .card-body {
+                padding: 0.5rem;
+            }
+
+            .btn {
+                padding: 0.8rem 1.5rem;
+                font-size: 0.9rem;
+            }
+
+            .badge {
+                padding: 0.5rem 1rem;
+                font-size: 0.8rem;
+            }
+
+            .drawn-numbers-container {
+                padding: 1rem;
+            }
+
+            .drawn-numbers .number {
+                width: 35px;
+                height: 35px;
+                font-size: 0.9rem;
+            }
+
+            .game-id-wrapper {
+                flex-direction: column;
+                gap: 5px;
+            }
+
+            .copy-button {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .numbers-container {
+                grid-template-columns: repeat(5, 1fr);
+                gap: 5px;
+                padding: 10px;
+            }
+
+            .number {
+                width: 35px;
+                height: 35px;
+                font-size: 1rem;
+                border-radius: 8px;
+            }
+
+            .game-header {
+                padding: 1.5rem 1rem;
+            }
+
+            .alert {
+                padding: 0.8rem;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
 </head>
 <body>
     <div class="snowflakes" aria-hidden="true">

@@ -1,10 +1,9 @@
-com/yunusemrenalbant/tombala/config/WebConfig.class
+com/yunusemrenalbant/tombala/model/GameStatus.class
 com/yunusemrenalbant/tombala/controller/GameController.class
+com/yunusemrenalbant/tombala/model/GameUpdate.class
 com/yunusemrenalbant/tombala/model/Game.class
 com/yunusemrenalbant/tombala/config/WebSocketConfig.class
 com/yunusemrenalbant/tombala/controller/TombalaController.class
 com/yunusemrenalbant/tombala/service/GameService.class
-com/yunusemrenalbant/tombala/model/TombalaCard.class
-com/yunusemrenalbant/tombala/model/GameStatus.class
-com/yunusemrenalbant/tombala/model/GameUpdate.class
 com/yunusemrenalbant/tombala/TombalaApplication.class
+com/yunusemrenalbant/tombala/model/TombalaCard.class
