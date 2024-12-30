@@ -4,24 +4,6 @@ Bu proje arkadaşlarınızla veya ailenizle oynayabileceğiniz yılbaşı temal�
 
 Denemek için: [Canlı Demo](https://tombala-production.up.railway.app/)
 
-## 📸 Ekran Görüntüleri
-
-### Ana Sayfa
-![Ana Sayfa](screenshots/home.png)
-*Oyun kurmak veya katılmak için giriş ekranı*
-
-### Oyun Başlangıcı
-![Oyun Başlangıcı](screenshots/waiting.png)
-*Diğer oyuncunun katılmasını bekleme ekranı*
-
-### Oyun Devam Ediyor
-![Oyun Devam Ediyor](screenshots/playing.png)
-*Aktif oyun ekranı - Sıra sistemi ve çekilen sayılar*
-
-### Oyun Sonu
-![Oyun Sonu](screenshots/finished.png)
-*Oyun sonu ekranı - Çinko ve Tombala durumları*
-
 ## 🎯 Özellikler
 
 - Gerçek zamanlı oyun deneyimi
