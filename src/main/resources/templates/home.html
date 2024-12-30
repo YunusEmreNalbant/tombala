@@ -177,6 +177,30 @@
             text-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
 
+        .music-control {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 10px;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 1000;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .music-control:hover {
+            transform: scale(1.1);
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .music-control i {
+            font-size: 24px;
+            color: white;
+        }
+
         @media (max-width: 768px) {
             .home-container {
                 padding: 1rem;
@@ -207,6 +231,14 @@
     </style>
 </head>
 <body>
+    <audio id="bgMusic" loop preload="auto">
+        <source src="https://cdn.pixabay.com/audio/2024/12/19/audio_59a5eb5971.mp3" type="audio/mp3">
+    </audio>
+
+    <div class="music-control" onclick="toggleMusic()" id="musicControl">
+        <i class="fas fa-volume-mute" id="musicIcon"></i>
+    </div>
+
     <div class="snowflakes" aria-hidden="true">
         <div class="snowflake">❅</div>
         <div class="snowflake">❆</div>
@@ -256,6 +288,42 @@
             e.preventDefault();
             const gameId = document.getElementById('gameId').value;
             window.location.href = '/game/' + gameId;
+        });
+
+        const bgMusic = document.getElementById('bgMusic');
+        const musicIcon = document.getElementById('musicIcon');
+        let isMusicPlaying = false;
+
+        bgMusic.volume = 0.2;
+
+        async function toggleMusic() {
+            try {
+                if (isMusicPlaying) {
+                    await bgMusic.pause();
+                    musicIcon.className = 'fas fa-volume-mute';
+                } else {
+                    await bgMusic.play();
+                    musicIcon.className = 'fas fa-volume-up';
+                }
+                isMusicPlaying = !isMusicPlaying;
+            } catch (error) {
+                console.error("Müzik çalma hatası:", error);
+                alert("Müzik çalınamadı. Lütfen tekrar deneyin.");
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const musicControl = document.getElementById('musicControl');
+            
+            bgMusic.load();
+            
+            musicControl.style.animation = 'pulse 2s infinite';
+        });
+
+        window.addEventListener('beforeunload', function() {
+            if (isMusicPlaying) {
+                bgMusic.pause();
+            }
         });
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>

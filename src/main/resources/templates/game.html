@@ -247,7 +247,7 @@
             width: 100%;
             height: 100%;
             pointer-events: none;
-            z-index: -1;
+            z-index: 999999;
             overflow: hidden;
         }
 
@@ -259,7 +259,7 @@
             text-shadow: 0 0 5px #000;
             top: -20px;
             animation: fall 10s linear infinite;
-            opacity: 0.8;
+            opacity: 0.;
         }
 
         @keyframes fall {
@@ -358,19 +358,49 @@
                 font-size: 0.9rem;
             }
         }
+
+        .music-control {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 10px;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 1000;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .music-control:hover {
+            transform: scale(1.1);
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .music-control i {
+            font-size: 24px;
+            color: white;
+        }
     </style>
 </head>
 <body>
+    <audio id="bgMusic" loop preload="auto">
+        <source src="https://cdn.pixabay.com/audio/2024/12/19/audio_59a5eb5971.mp3" type="audio/mp3">
+    </audio>
+
+    <div class="music-control" onclick="toggleMusic()" id="musicControl">
+        <i class="fas fa-volume-mute" id="musicIcon"></i>
+    </div>
+
     <div class="snowflakes" aria-hidden="true">
-        <div class="snowflake">❅</div>
+        <div class="snowflake">🎄</div>
+        <div class="snowflake">🎅</div>
+        <div class="snowflake">🎄</div>
+        <div class="snowflake">🎅</div>
         <div class="snowflake">❆</div>
-        <div class="snowflake">❅</div>
         <div class="snowflake">❆</div>
-        <div class="snowflake">❅</div>
         <div class="snowflake">❆</div>
-        <div class="snowflake">❅</div>
-        <div class="snowflake">❆</div>
-        <div class="snowflake">❅</div>
         <div class="snowflake">❆</div>
     </div>
 
@@ -503,6 +533,40 @@
         const currentPlayerName = /*[[${param.playerId != null ? game.players.get(param.playerId[0]) : null}]]*/ null;
         const initialDrawnNumbers = /*[[${game.drawnNumbers}]]*/ [];
         let stompClient = null;
+
+        const bgMusic = document.getElementById('bgMusic');
+        const musicIcon = document.getElementById('musicIcon');
+        let isMusicPlaying = false;
+
+        bgMusic.volume = 0.3;
+
+        async function toggleMusic() {
+            try {
+                if (isMusicPlaying) {
+                    await bgMusic.pause();
+                    musicIcon.className = 'fas fa-volume-mute';
+                } else {
+                    await bgMusic.play();
+                    musicIcon.className = 'fas fa-volume-up';
+                }
+                isMusicPlaying = !isMusicPlaying;
+            } catch (error) {
+                console.error("Müzik çalma hatası:", error);
+                alert("Müzik çalınamadı. Lütfen tekrar deneyin.");
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const musicControl = document.getElementById('musicControl');
+            bgMusic.load();
+            musicControl.style.animation = 'pulse 2s infinite';
+        });
+
+        window.addEventListener('beforeunload', function() {
+            if (isMusicPlaying) {
+                bgMusic.pause();
+            }
+        });
 
         window.addEventListener('load', async function() {
             console.log('Sayfa yüklendi, WebSocket bağlantısı başlatılıyor...');
