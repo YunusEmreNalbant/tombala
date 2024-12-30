@@ -1,6 +1,6 @@
 # Yılbaşı Tombalası 🎄
 
-Bu proje arkadaşlarınızla veya ailenizle oynayabileceğiniz yılbaşı temalı basit bir tombala oyunudur.
+Bu proje arkadaşlarınızla veya ailenizle oynayabileceğiniz yılbaşı temalı iki kişilik basit bir tombala oyunudur.
 
 ## 📸 Ekran Görüntüleri
 
