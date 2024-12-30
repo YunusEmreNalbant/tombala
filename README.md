@@ -27,6 +27,7 @@ Bu proje arkadaşlarınızla veya ailenizle oynayabileceğiniz yılbaşı temal�
 - Yılbaşı temalı tasarım
 - Otomatik çinko ve tombala kontrolü
 - Anlık bildirimler
+- Mobil uyumlu tasarım
 
 ## 🛠️ Teknolojiler
 
