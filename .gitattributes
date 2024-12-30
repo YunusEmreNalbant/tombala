@@ -1,0 +1,7 @@
+*.java linguist-language=Java
+*.html linguist-vendored
+*.css linguist-vendored
+*.js linguist-vendored
+*.xml linguist-language=Java
+pom.xml linguist-language=Java
+*.properties linguist-language=Java 
